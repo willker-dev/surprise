@@ -119,7 +119,168 @@
             "“O amor é a única coisa que cresce quando compartilhada.” - Paulo Coelho",
             "Caso aceite estar comigo, posso prometer duas coisas de imediato:",
             "1. Que a gente vai ser muito feliz.",
+            "2. Que vou cuidar muito bem de você."<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaração de Amor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #ff69b4; /* Cor rosa para o botão */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        button:hover {
+            background-color: #ff85c0; /* Tom mais claro quando o botão é hover */
+            transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 1.5;
+            min-height: 60px;
+            overflow: hidden;
+            white-space: normal; /* Permite quebra de linha no texto */
+            word-wrap: break-word; /* Garante que o texto não ultrapasse os limites */
+            border-right: 4px solid #ff69b4;
+            animation: typing 3s steps(30, end), blink-caret .75s step-end infinite;
+            display: inline-block;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        #finalMessage {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #ff69b4;
+            font-weight: bold;
+            animation: fadeIn 2s ease-in-out;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #ff69b4; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /* Media Queries para responsividade */
+        @media (max-width: 600px) {
+            button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+            #message {
+                font-size: 16px;
+                padding: 0 5px;
+            }
+            #finalMessage {
+                font-size: 18px;
+                padding: 0 5px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+            #message {
+                font-size: 14px;
+                padding: 0 2px;
+            }
+            #finalMessage {
+                font-size: 16px;
+                padding: 0 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <button id="startButton">Continue</button>
+        <div id="message"></div>
+        <div id="finalMessage">Obrigado por ler até aqui. Espero que possamos continuar a nos conhecer melhor. 🌟</div>
+    </div>
+    <script>
+        const messages = [
+            "Oi Marcela, espero que você esteja bem.",
+            "Entendo que você seja uma pessoa mais reservada, e isso é completamente respeitável.",
+            "Quero te mostrar que, apesar das minhas palavras, minha intenção é apenas fazer você sorrir.",
+            "Não estou aqui para impor nada, apenas para te dizer que você é muito especial para mim.",
+            "“O amor é a única coisa que cresce quando compartilhada.” - Paulo Coelho",
+            "Caso aceite estar comigo, posso prometer duas coisas de imediato:",
+            "1. Que a gente vai ser muito feliz.",
             "2. Que vou cuidar muito bem de você."
+        ];
+        let currentMessage = 0;
+        const messageElement = document.getElementById('message');
+        const startButton = document.getElementById('startButton');
+        const finalMessageElement = document.getElementById('finalMessage');
+
+        startButton.addEventListener('click', () => {
+            startButton.style.display = 'none'; // Esconde o botão
+            displayNextMessage();
+        });
+
+        function displayNextMessage() {
+            if (currentMessage < messages.length) {
+                messageElement.textContent = '';
+                const message = messages[currentMessage];
+                let charIndex = 0;
+
+                function typeChar() {
+                    if (charIndex < message.length) {
+                        messageElement.textContent += message.charAt(charIndex);
+                        charIndex++;
+                        setTimeout(typeChar, 50); // Velocidade de digitação
+                    } else {
+                        currentMessage++;
+                        setTimeout(displayNextMessage, 3000); // Espera 3 segundos antes da próxima mensagem
+                    }
+                }
+
+                typeChar();
+            } else {
+                // Quando todas as mensagens forem exibidas, mostra a mensagem final
+                setTimeout(() => {
+                    finalMessageElement.style.display = 'block'; // Exibe a mensagem final
+                }, 3000); // Espera 3 segundos após a última mensagem
+            }
+        }
+    </script>
+</body>
+</html>
+
         ];
         let currentMessage = 0;
         const messageElement = document.getElementById('message');
