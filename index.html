@@ -19,6 +19,8 @@
             align-items: center;
             height: 100vh;
             flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
         }
         button {
             padding: 12px 24px;
@@ -35,23 +37,28 @@
             transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
         }
         #message {
-            margin-top: 30px;
-            font-size: 22px;
+            margin-top: 20px;
+            font-size: 18px;
             line-height: 1.5;
             min-height: 60px;
             overflow: hidden;
-            white-space: nowrap;
+            white-space: normal; /* Permite quebra de linha no texto */
+            word-wrap: break-word; /* Garante que o texto não ultrapasse os limites */
             border-right: 4px solid #ff69b4;
             animation: typing 3s steps(30, end), blink-caret .75s step-end infinite;
             display: inline-block;
+            padding: 0 10px;
+            box-sizing: border-box;
         }
         #finalMessage {
             display: none;
-            margin-top: 30px;
-            font-size: 24px;
+            margin-top: 20px;
+            font-size: 20px;
             color: #ff69b4;
             font-weight: bold;
             animation: fadeIn 2s ease-in-out;
+            padding: 0 10px;
+            box-sizing: border-box;
         }
         @keyframes typing {
             from { width: 0; }
@@ -64,6 +71,36 @@
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+        /* Media Queries para responsividade */
+        @media (max-width: 600px) {
+            button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+            #message {
+                font-size: 16px;
+                padding: 0 5px;
+            }
+            #finalMessage {
+                font-size: 18px;
+                padding: 0 5px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            button {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+            #message {
+                font-size: 14px;
+                padding: 0 2px;
+            }
+            #finalMessage {
+                font-size: 16px;
+                padding: 0 2px;
+            }
         }
     </style>
 </head>
@@ -80,11 +117,10 @@
             "Quero te mostrar que, apesar das minhas palavras, minha intenção é apenas fazer você sorrir.",
             "Não estou aqui para impor nada, apenas para te dizer que você é muito especial para mim.",
             "“O amor é a única coisa que cresce quando compartilhada.” - Paulo Coelho",
-            "Caso aceite estar comigo, posso prometer duas coisas de imediato:",
+            "Caso aceite, posso prometer duas coisas de imediato:",
             "1. Que a gente vai ser muito feliz.",
             "2. Que vou cuidar muito bem de você."
         ];
-
         let currentMessage = 0;
         const messageElement = document.getElementById('message');
         const startButton = document.getElementById('startButton');
